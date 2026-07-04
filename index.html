@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Forest Camp — 5 Day Survival</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="ui">
+    <div id="topbar">
+      <div>Day: <span id="day">1</span>/5</div>
+      <div>Timer: <span id="timer">04:30</span></div>
+      <div>Money: $<span id="money">0</span></div>
+      <div>Health: <span id="health">100</span></div>
+      <div>Tents: <span id="tentCount">0</span></div>
+    </div>
+
+    <div id="stage">
+      <canvas id="game" width="900" height="600"></canvas>
+
+      <!-- Virtual controls (mobile) -->
+      <div id="touchControls">
+        <div id="joystickBase"></div>
+        <div id="joystickKnob"></div>
+        <div class="touchButtons">
+          <button class="touchBtn" id="touchPickup">G</button>
+          <button class="touchBtn" id="touchInteract">E</button>
+          <button class="touchBtn" id="touchEnter">H</button>
+          <button class="touchBtn" id="touchShop">SHOP</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="hud">
+      <div id="inventory" class="panel">
+        <h3>Backpack <small>(<span id="invCount">0</span>/15)</small></h3>
+        <ul id="invList"></ul>
+      </div>
+
+      <div id="actions" class="panel">
+        <h3>Controls</h3>
+        <p>Move: WASD / Arrows or joystick</p>
+        <p>G: Pick up (or touch G)</p>
+        <p>E: Interact / Clean / Plant (or touch E)</p>
+        <p>H: Enter tent (or touch H)</p>
+      </div>
+    </div>
+
+    <div id="notifications"></div>
+
+    <div id="shopOverlay" class="overlay hidden">
+      <div class="shop">
+        <h2>SHOP</h2>
+        <div class="shop-section">
+          <h3>Tents</h3>
+          <div class="shop-item">
+            <div class="name">Normal Tent</div>
+            <div class="price">$50</div>
+            <button data-buy="normal_tent">Buy</button>
+          </div>
+          <div class="shop-item">
+            <div class="name">Oracle Tent (Premium)</div>
+            <div class="price">$180</div>
+            <button data-buy="oracle_tent">Buy</button>
+          </div>
+        </div>
+
+        <div class="shop-section">
+          <h3>Extra Items</h3>
+          <div class="shop-item">
+            <div class="name">Air Conditioner</div>
+            <div class="price">$40</div>
+            <button data-buy="ac">Buy</button>
+          </div>
+          <div class="shop-item">
+            <div class="name">USB Charger</div>
+            <div class="price">$25</div>
+            <button data-buy="usb">Buy</button>
+          </div>
+          <div class="shop-item">
+            <div class="name">Mosquito Spray</div>
+            <div class="price">$15</div>
+            <button data-buy="spray">Buy</button>
+          </div>
+          <div class="shop-item">
+            <div class="name">Ice Pack</div>
+            <div class="price">$10</div>
+            <button data-buy="ice">Buy</button>
+          </div>
+        </div>
+
+        <div class="shop-actions">
+          <button id="closeShop">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="plantModal" class="overlay hidden">
+      <div class="panel">
+        <h3>You have picked up a tree seed!</h3>
+        <p>You can plant a tree now (Planting takes 60s and grants x2 item value for 45s).</p>
+        <div class="shop-actions">
+          <button id="unlockPlant">Plant a tree (enable E)</button>
+          <button id="closePlant">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="shopButton" class="floating hidden">
+      <div id="shopNotice">You can buy items in the shop!</div>
+      <button id="openShop">SHOP</button>
+    </div>
+
+    <div id="tentInside" class="overlay hidden">
+      <div class="inside panel">
+        <img id="insideImg" src="" alt="inside" />
+        <div class="shop-actions">
+          <div id="insideText">Resting...</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="endOverlay" class="overlay hidden">
+      <div class="panel">
+        <h2 id="endTitle">Game Over</h2>
+        <div id="endScore"></div>
+        <button id="restart">Restart</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

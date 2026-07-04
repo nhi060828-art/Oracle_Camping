@@ -1,0 +1,58 @@
+* { box-sizing: border-box; font-family: Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
+body { margin: 0; background: #0e1410; color: #eee; display:flex; justify-content:center; padding:12px; }
+#ui { width: 1000px; max-width: 1000px; }
+#topbar { display:flex; gap:18px; justify-content:space-between; padding:8px 12px; background:#222; border-radius:6px; margin-bottom:8px; }
+#stage { position:relative; }
+canvas { display:block; margin: 8px auto; background: linear-gradient(#bfe3a7,#7bb868); border-radius:8px; box-shadow: 0 4px 14px rgba(0,0,0,0.6); touch-action:none; }
+#hud { display:flex; gap:12px; margin-top:8px; }
+.panel { background:#1b1b1b; padding:10px; border-radius:6px; width:300px; }
+#inventory { max-height:200px; overflow:auto; }
+#invList { list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:6px; }
+#invList li { background:#2b2b2b; padding:6px 8px; border-radius:4px; font-size:13px; }
+#notifications { position:fixed; left:20px; bottom:20px; color:#fff; z-index:60; }
+.overlay { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background: rgba(0,0,0,0.6); z-index:80; }
+.overlay .panel { background:#171717; padding:18px; border-radius:8px; color:#fff; width:420px; }
+.hidden { display:none; }
+.shop { background:#1c1c1c; padding:18px; border-radius:8px; color:#fff; width:720px; max-height:80vh; overflow:auto; }
+/* center the yellow price in each shop row */
+.shop-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+/* make the left content (name) take remaining space */
+.shop-item > :not(.price):not(button) {
+  flex: 1 1 auto;
+}
+
+/* ensure the Buy button keeps its natural size on the right */
+.shop-item > button {
+  flex: 0 0 auto;
+}
+
+/* center and style the price */
+.shop-item .price {
+  width: 120px;            /* fixed width so it's visually centered */
+  text-align: center;
+  margin: 0 12px;
+  font-weight: 600;
+  color: #ffd36a;          /* your yellow */
+}
+.shop-actions { margin-top:12px; text-align:right; }
+button { background:#3b82f6; color:white; border:0; padding:8px 12px; border-radius:6px; cursor:pointer; }
+button:hover { filter:brightness(1.05); }
+#shopButton { position:fixed; right:20px; top:100px; z-index:90; display:flex; flex-direction:column; gap:8px; align-items:center; }
+#shopNotice { background:#202020; padding:8px 12px; border-radius:6px; }
+.inside img { width:420px; height:300px; object-fit:cover; border-radius:6px; display:block; margin-bottom:8px; }
+.floating { position:fixed; right:20px; top:20px; z-index:90; }
+#endOverlay .panel { width:360px; text-align:center; }
+
+/* Touch controls */
+#touchControls { position:absolute; left:6px; bottom:6px; width:220px; height:220px; z-index:70; display:flex; pointer-events:auto; }
+#joystickBase { position:absolute; left:10px; bottom:10px; width:160px; height:160px; background:rgba(0,0,0,0.25); border-radius:50%; touch-action:none; }
+#joystickKnob { position:absolute; left:66px; bottom:66px; width:28px; height:28px; background:rgba(255,255,255,0.9); border-radius:50%; transform:translate(0,0); }
+.touchButtons { position:absolute; right:-240px; bottom:10px; display:flex; flex-direction:column; gap:8px; }
+.touchBtn { width:72px; height:48px; font-weight:700; border-radius:8px; background:#4b5563; color:#fff; border:none; }
