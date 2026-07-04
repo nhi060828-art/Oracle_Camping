@@ -3,7 +3,7 @@
 
 (function(){
   // ----- Configuration -----
-  var DAY_LENGTH = 130; // seconds for testing: day length
+  var DAY_LENGTH = 60; // seconds for testing: day length
   var TOTAL_DAYS = 5;
   var CANVAS_WIDTH = 900;
   var CANVAS_HEIGHT = 600;
